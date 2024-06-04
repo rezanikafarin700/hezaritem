@@ -1,0 +1,33 @@
+.main {
+  display: flex;
+  flex-direction: row-reverse;
+  text-align: right;
+
+  &__sidebar {
+    max-height: 100vh;
+    background-color: firebrick;
+    flex: 0 0 25%;
+    color: #fff;
+    position: sticky;
+    top: 0;
+    overflow-y: auto;
+  }
+
+  &__items {
+    flex: 1 1 auto;
+    background-color: green;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__item {
+    width: calc(33.333% - 2rem);
+    margin: 1rem;
+    background-color: aqua;
+
+    &--ratio {
+      padding-top: 100%;
+      position: relative;
+    }
+  }
+}
