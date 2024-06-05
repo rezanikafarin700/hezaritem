@@ -11,6 +11,11 @@
     position: sticky;
     top: 0;
     overflow-y: auto;
+    display: none;
+
+    @media (min-width: 768px) {
+        display: block;
+    }
   }
 
   &__items {
