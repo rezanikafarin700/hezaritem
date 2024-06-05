@@ -1,0 +1,53 @@
+.item {
+  padding: 1rem;
+  border-radius: 4px;
+  border: 1px solid  rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  display: flex;
+  flex-direction: row-reverse;
+  width: calc(33.333% - 2rem);
+  margin: 1rem;
+  box-shadow: 1px 1px 10px rgba(0,0,0,.1);
+
+  &__ratio {
+    padding-top: 50%;
+    position: relative;
+  }
+
+  &__text {
+    flex: 1 1 auto;
+    margin-left: 1rem;
+
+    &--title {
+      font-size: 1rem;
+      color: rgba(0, 0, 0, 0.87);
+      font-weight: 500;
+      height: 56px;
+      line-height: 28px;
+      margin-bottom: auto;
+      margin-top: 0;
+      overflow: hidden;
+      overflow-wrap: break-word;
+    }
+
+    &--description {
+      color: rgba(0, 0, 0, 0.56);
+      font-size: 0.875rem;
+      line-height: 24px;
+      min-width: 100%;
+      overflow: hidden;
+      overflow-wrap: break-word;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 0;
+      direction: rtl;
+    }
+  }
+  &__image {
+    border-radius: 4px;
+    flex: 0 0 40%;
+    background : url(./image.webp) ;
+    background-position: center;
+    background-size: cover;
+  }
+}

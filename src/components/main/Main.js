@@ -1,5 +1,6 @@
 import { Component } from "react";
 import Sidebar from "../sidebar/Sidebar";
+import Item from "../item/Item";
 import "./main.scss";
 
 class Main extends Component {
@@ -11,240 +12,34 @@ class Main extends Component {
         </div>
 
         <div className="main__items">
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
-          <div className="main__item">
-            <div className="main__item--ratio"></div>
-          </div>
+        <Item/>
+        <Item/>
+        <Item/>
+        <Item/>
+        <Item/>
+        <Item/>
+        <Item/>
+        <Item/>
+        <Item/>
+        <Item/>
+        <Item/>
+        <Item/>
+        <Item/>
+        <Item/>
+        <Item/>
+        <Item/>
+        <Item/>
+        <Item/>
+        <Item/>
+        <Item/>
+        <Item/>
+        <Item/>
+        <Item/>
+        <Item/>
+        <Item/>
+        <Item/>
+        <Item/>
+            
         </div>
       </div>
     );
