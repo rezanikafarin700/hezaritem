@@ -1,4 +1,5 @@
 import { Component } from "react";
+import SelectSearch from "../select-search/SelectSearch";
 import './header.scss';
 
 class header extends Component{

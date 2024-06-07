@@ -20,9 +20,11 @@ class SelectSearch extends Component {
     textBox: "",
   };
 
-  selectItem = ()=>{
-    this.setState((oldState) =>{
-        let newState = {...oldState};
+  selectItem = (e)=>{
+    console.log(e.target.innerText);
+    this.setState((oldState) => {
+        let newState = { ... oldState };
+        newState.textBox = e.target.innerText;
         return newState;
     })
   }
@@ -31,7 +33,7 @@ class SelectSearch extends Component {
     let users = this.state.users.filter(
       (user) => user.name.indexOf(this.state.textBox) > -1
     );
-    return users.map((user) => <div className="search__item">{user.name}</div>);
+    return users.map((user) => <div className="search__item" onClick={this.selectItem}>{user.name}</div>);
   };
 
   filterUsers = (e) => {
@@ -45,7 +47,7 @@ class SelectSearch extends Component {
   render() {
     return (
       <div className="search">
-        <input onChange={this.filterUsers} />
+        <input onChange={this.filterUsers}  value={this.state.textBox}/>
         <div className="search__box">{this.showList()}</div>
       </div>
     );
