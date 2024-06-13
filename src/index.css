@@ -1,13 +1,11 @@
+*{
+  box-sizing: border-box;
+}
+
 html {
   font-size: 100%;
 }
 
-html,body {
-  padding: 0;
-  margin : 0;
-  outline : none;
-  border: none;
-}
 
 body {
   font-family: "Vazir" ,serif , "sans-serif";
@@ -15,10 +13,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-*{
-  box-sizing: border-box;
-}
 
+
+html,body {
+  padding: 0;
+  margin : 0;
+  outline : none;
+  border: none;
+}
 
 
 code {
