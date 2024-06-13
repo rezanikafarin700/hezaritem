@@ -1,7 +1,6 @@
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import Main from './components/main/Main';
-import SelectSearch from './components/select-search/SelectSearch';
 
 import './App.scss';
 
@@ -11,8 +10,6 @@ function App() {
       <Header/> 
       <Main/>
       <Footer/>
-
-
     </div>
   );
 }
