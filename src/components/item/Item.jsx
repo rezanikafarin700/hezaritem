@@ -7,10 +7,10 @@ class Item extends Component{
             <div className='item'>
                 <div className='item__ratio'></div>
                 <div className='item__text'>
-                    <div className='item__text--title'>عنوان</div>
-                    <div className='item__text--description'>دوچرخه مدل 88 در حد نو</div>
+                    <div className='item__text--title'>{this.props.data.title}</div>
+                    <div className='item__text--description'>{this.props.data.text}</div>
                 </div>
-                <div className='item__image'></div>
+                <div className='item__image' style={ {backgroundImage : `url(${this.props.data.image})`} }></div>
             </div>
         )
     }
