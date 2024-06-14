@@ -1,14 +1,15 @@
 import { Component } from "react";
 import Sidebar from "../sidebar/Sidebar";
 import Item from "../item/Item";
-import { getAllData } from '../../data/data';
+import { getAllData,findData } from '../../data/data';
 import "./main.scss";
 
 class Main extends Component {
   state = { data : getAllData()}
   render() {
-    console.log(this.state.data);
-  
+    let d = findData(3);
+    console.log(d);
+
     return (
       <div className="main">
         <div className="main__sidebar">
