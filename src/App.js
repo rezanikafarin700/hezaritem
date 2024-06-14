@@ -5,7 +5,6 @@ import './App.scss';
 function App() {
   return (
     <div className="app">
-      <span className='fa fa-user'>sghl</span>
       <Header/> 
       <Main/>
       <Footer/>
