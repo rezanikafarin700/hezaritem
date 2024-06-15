@@ -1,7 +1,7 @@
-$color : orange;
+@import "../../../public/sass/colorpullet.scss";
+
 .header {
-    background-color: $color;
-    color : #fff;
+    background-color: $header;
     text-align: center;
     position: sticky;
     top : 0;
@@ -9,6 +9,5 @@ $color : orange;
 
     &__search{
         width: 25%;
-        // max-height: 30px;
     }
 }

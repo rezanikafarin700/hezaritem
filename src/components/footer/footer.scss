@@ -1,6 +1,5 @@
-$color : blue;
+@import "../../../public/sass/colorpullet.scss";
 .footer {
-    background-color: $color;
-    color : #fff;
+    background-color: $footer;
     text-align: center;
 }
