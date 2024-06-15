@@ -1,3 +1,5 @@
+@import "../../../public/sass/colorpullet.scss";
+
 .main {
   display: flex;
   flex-direction: row-reverse;
@@ -5,9 +7,8 @@
 
   &__sidebar {
     max-height: 100vh;
-    background-color: firebrick;
+    background-color: $sidebar;
     flex: 0 0 25%;
-    color: #fff;
     position: sticky;
     top: 0;
     overflow-y: auto;
@@ -20,15 +21,14 @@
 
   &__items {
     flex: 1 1 auto;
-    background-color: #fff;
     display: flex;
     flex-wrap: wrap;
+    flex-direction: row-reverse;
   }
 
   &__item {
     width: calc(33.333% - 2rem);
     margin: 1rem;
-    background-color: aqua;
 
     &--ratio {
       padding-top: 100%;
