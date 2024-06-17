@@ -7,8 +7,8 @@ import "./main.scss";
 class Main extends Component {
   state = { data : getAllData()}
   render() {
-    let d = findData(3);
-    console.log(d);
+    let jsonData = JSON.stringify(this.state.data);
+    console.log(jsonData);
 
     return (
       <div className="main">
