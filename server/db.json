@@ -1,0 +1,48 @@
+{
+  "users": [
+    {
+      "id": "ed87",
+      "fullname": "رضا نیک آفرین",
+      "photo": "https://static.roocket.ir/images/avatar/2022/12/16/2hr3Kh27VZBfWUNmeX2IzJ9wyqejgJwbekTQ1GcT.png",
+      "mobile": "09186936959",
+      "email": "rezanikafarin100@gmail.com",
+      "job": "برنامه نویس",
+      "group": "1"
+    },
+    {
+      "id": "5f56",
+      "fullname": "بهشته نیک آفرین",
+      "photo": "https://salamdonya.com/assets/images/43/4334bwtru.jpg",
+      "mobile": "000000000",
+      "email": "beheshtehikafarin100@gmail.com",
+      "job": "برنامه نویس",
+      "group": "2"
+    }
+  ],
+  "groups": [
+    {
+      "id": "1",
+      "name": "همکار"
+    },
+    {
+      "id": "2",
+      "name": "دوست"
+    },
+    {
+      "id": "1",
+      "name": "فامیل"
+    },
+    {
+      "id": "1",
+      "name": "آشنا"
+    },
+    {
+      "id": "1",
+      "name": "همکار"
+    },
+    {
+      "id": "1",
+      "name": "سرویس"
+    }
+  ]
+}
