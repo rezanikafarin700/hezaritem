@@ -1,7 +1,7 @@
-import { Component } from "react";
+import { PureComponent } from "react";
 import "./select-search.scss";
 
-class SelectSearch extends Component {
+class SelectSearch extends PureComponent {
   state = {
     users: [
       { id: 1, name: "علی", age: 23 },

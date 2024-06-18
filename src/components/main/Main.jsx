@@ -1,9 +1,9 @@
 import Item from "../item/Item";
-import { Component } from "react";
+import { PureComponent } from "react";
 import Sidebar from "../sidebar/Sidebar";
 import "./main.scss";
 
-class Main extends Component {
+class Main extends PureComponent {
 
   render() {
 

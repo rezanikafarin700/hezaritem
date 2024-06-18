@@ -1,8 +1,8 @@
-import {Component} from 'react';
+import {PureComponent} from 'react';
 import './items.scss'
 
 
-class Items extends Component{
+class Items extends PureComponent{
     render(){
         return(
             <div className='items'>

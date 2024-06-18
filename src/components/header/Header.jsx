@@ -1,8 +1,7 @@
-import { Component } from "react";
-import SelectSearch from "../select-search/SelectSearch";
+import { PureComponent } from "react";
 import './header.scss';
 
-class header extends Component{
+class header extends PureComponent{
     render(){
         return(
             <div className="header">Header</div>
