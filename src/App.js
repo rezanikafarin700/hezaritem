@@ -38,7 +38,7 @@ const App = () => {
   return (
     <div className="app">
       <Header />
-      <Main data={getProducts} />
+      <Main data={getProducts} loading={loading}/>
       <Footer />
     </div>
   );

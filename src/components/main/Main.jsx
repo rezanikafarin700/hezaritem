@@ -1,6 +1,6 @@
 import Item from "../item/Item";
 import { PureComponent } from "react";
-import Sidebar from "../sidebar/Sidebar";
+import {Sidebar,Spinner} from "../../components";
 import "./main.scss";
 
 class Main extends PureComponent {
@@ -14,7 +14,7 @@ class Main extends PureComponent {
         </div>
 
         <div className="main__items">
-          {this.props.data.map((d,index) => (<Item key={index} data={d}/>))}
+          {this.props.loading ? <Spinner/> : this.props.data.map((d,index) => (<Item key={index} data={d}/>))}
         </div>
       </div>
     );
