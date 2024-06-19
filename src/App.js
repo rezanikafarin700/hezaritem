@@ -1,7 +1,6 @@
 import { Header, Footer, Main } from "./components";
 import { useEffect, useState } from "react";
-import axios from "axios";
-
+import { getAllProducts,getAllUsers } from "./services/Service";
 import "./App.scss";
 
 const App = () => {
@@ -14,10 +13,8 @@ const App = () => {
     const featchData = async () => {
       try {
         setLoading(true);
-        const { data: products } = await axios.get(
-          "http://localhost:9000/products"
-        );
-        const { data: users } = await axios.get("http://localhost:9000/users");
+        const { data: products } = await getAllProducts()
+        const { data: users } = await getAllUsers();
         setProducts(products);
         setUsers(users);
         setLoading(false);
