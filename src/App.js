@@ -1,4 +1,4 @@
-import { Header, Footer, Main } from "./components";
+import { Header, Footer, Main,Getproduct } from "./components";
 import { useEffect, useState } from "react";
 import { getAllProducts,getAllUsers } from "./services/Service";
 import "./App.scss";
@@ -34,9 +34,10 @@ const App = () => {
 
   return (
     <div className="app">
-      <Header />
+      <Getproduct/>
+      {/* <Header />
       <Main data={getProducts} loading={loading}/>
-      <Footer />
+      <Footer /> */}
     </div>
   );
 };

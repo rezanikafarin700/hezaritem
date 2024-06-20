@@ -1,5 +1,7 @@
 *{
   box-sizing: border-box;
+    font-family: "Vazir" ,serif , "sans-serif";
+
 }
 
 html {
@@ -8,7 +10,6 @@ html {
 
 
 body {
-  font-family: "Vazir" ,serif , "sans-serif";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
