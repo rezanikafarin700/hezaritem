@@ -34,9 +34,10 @@ const App = () => {
 
   return (
     <div className="app">
-      <Header />
+      <Getproduct />
+      {/* <Header />
       <Main data={getProducts} loading={loading}/>
-      <Footer />
+      <Footer /> */}
     </div>
   );
 };

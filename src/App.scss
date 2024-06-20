@@ -6,10 +6,27 @@
   flex : 1 1 auto;
   color : $text;
   background: $background;
-  font-family: "Vazir";
-
 }
 
+.mybtn{
+  padding: .5rem 1rem;
+  border-radius: 4px;
+  text-align: center;
+  border: none;
+  font-size: medium;
+  cursor: pointer;
+
+  &__sucsess{
+    background-color: $footer;
+    color : $color-btn;
+  
+  }
+  &__denger{
+    background-color: $denger;
+    color : $color-btn;
+  
+  }
+}
 
 
 

@@ -21,20 +21,26 @@
         }
     }
 
-    &__btn{
-        background-color: $footer;
-        color : $color-btn;
-        padding: .5rem 1rem;
-        border-radius: 4px;
-        text-align: center;
-        border: none;
-        font-size: large;
-
-
-        @media (min-width: 1024px) {
-            margin: 0 auto;
-        }
+    &__btns{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
     }
+
+    // &__btn{
+    //     background-color: $footer;
+    //     color : $color-btn;
+    //     padding: .5rem 1rem;
+    //     border-radius: 4px;
+    //     text-align: center;
+    //     border: none;
+    //     font-size: large;
+
+
+    //     @media (min-width: 1024px) {
+    //         margin: 0 auto;
+    //     }
+    // }
 
     &__input{
         width: 100%;
