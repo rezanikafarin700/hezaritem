@@ -2,10 +2,16 @@
 
 .header {
     background-color: $header;
-    text-align: center;
     position: sticky;
     top : 0;
     z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    flex-direction: row-reverse;
+    border-bottom: 1px solid $border;
+    box-shadow: 1px 1px 50px $border;
+
 
     &__search{
         width: 25%;

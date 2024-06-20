@@ -34,10 +34,10 @@ const App = () => {
 
   return (
     <div className="app">
-      <Getproduct />
-      {/* <Header />
+      {/* <Getproduct /> */}
+      <Header />
       <Main data={getProducts} loading={loading}/>
-      <Footer /> */}
+      <Footer />
     </div>
   );
 };

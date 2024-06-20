@@ -24,7 +24,11 @@
   &__denger{
     background-color: $denger;
     color : $color-btn;
-  
+ 
+  }
+  &__logo{
+    background-color: $background;
+    color : $text;
   }
 }
 
