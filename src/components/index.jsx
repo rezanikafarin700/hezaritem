@@ -1,3 +1,4 @@
+export { default as Home} from './home/Home';
 export { default as Main } from './main/Main';
 export { default as Item } from './item/Item';
 export { default as Items } from './items/Items';

@@ -1,44 +1,17 @@
-import { Header, Footer, Main,Getproduct } from "./components";
-import { useEffect, useState } from "react";
-import { getAllProducts,getAllUsers } from "./services/Service";
+import { Home,Header,Footer,Getproduct } from "./components";
+import {  Route, Routes } from "react-router-dom";
 import "./App.scss";
 
 const App = () => {
-  const [loading, setLoading] = useState(false);
-  const [getProducts, setProducts] = useState([]);
-  const [getUsers, setUsers] = useState([]);
-
-  useEffect(() => {
-    console.log("useEffect...");
-    const featchData = async () => {
-      try {
-        setLoading(true);
-        const { data: products } = await getAllProducts()
-        const { data: users } = await getAllUsers();
-        setProducts(products);
-        setUsers(users);
-        setLoading(false);
-
-        console.log("products = ", products);
-        console.log("users = ", users);
-      } catch (err) {
-        console.log(err.message);
-        setLoading(false);
-      }
-    };
-
-    featchData();
-  }, []);
-
-  console.log("getProducts = ", getProducts);
-
   return (
-    <div className="app">
-      {/* <Getproduct /> */}
-      <Header />
-      <Main data={getProducts} loading={loading}/>
-      <Footer />
-    </div>
+    <>
+      <Header/>
+      <Routes>
+          <Route path="/" element={<Home/>}/>
+          <Route  path="/addproduct" element={<Getproduct />} />
+      </Routes>
+      <Footer/>
+    </>
   );
 };
 
