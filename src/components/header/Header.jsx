@@ -7,10 +7,11 @@ class header extends PureComponent {
     return (
       <div className="header">
         <div className="mybtn mybtn__logo">لوگو</div>
-        <Link to="/addproduct">
-          <button onClick={this.addProduct} className="mybtn mybtn__sucsess">
-            ثبت محصول
-          </button>
+        <Link
+          to="/addproduct"
+          className="mybtn mybtn__sucsess"
+        >
+          ثبت محصول
         </Link>
       </div>
     );

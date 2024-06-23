@@ -1,5 +1,4 @@
 import {PureComponent} from 'react';
-import '../color.scss';
 import './footer.scss';
 
 class Footer extends PureComponent{

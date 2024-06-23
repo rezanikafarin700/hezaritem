@@ -18,9 +18,6 @@ const Home = () => {
         setProducts(products);
         setUsers(users);
         setLoading(false);
-
-        console.log("products = ", products);
-        console.log("users = ", users);
       } catch (err) {
         console.log(err.message);
         setLoading(false);
