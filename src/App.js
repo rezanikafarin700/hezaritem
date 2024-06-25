@@ -1,4 +1,4 @@
-import { Home,Header,Footer,Getproduct,Product } from "./components";
+import { Home,Header,Footer,Getproduct,Product,Spinner } from "./components";
 import {  Route, Routes } from "react-router-dom";
 import "./App.scss";
 

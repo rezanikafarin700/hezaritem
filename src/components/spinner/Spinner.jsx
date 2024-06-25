@@ -1,8 +1,9 @@
 import './spinner.scss'
 const Spinner = ()=>{
     return(
-        <div>
-            <span className="spinner">loadin...</span>
+        <div className='parent-spinner'>
+            <span className="parent-spinner__spinner"></span>
+            <p>...لطفا شکیبا باشید</p>
         </div>
     )
 }

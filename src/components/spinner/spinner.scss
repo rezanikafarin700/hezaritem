@@ -1,8 +1,34 @@
-.spinner{
-    background-color: orangered;
-    color : #fff;
-    padding: 1rem 2rem;
-    border-radius: 4px;
-    text-align: center;
-    z-index: 1000;
+@import '../../../public/sass/colorpullet';
+.parent-spinner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: $sidebar;
+
+    &__spinner {
+        width: 45px;
+        height: 45px;
+        border: {
+            left :  8px solid $spinner;
+            right:  8px solid $spinner;
+            top :  8px solid $spinner;
+            bottom: 8px solid blue;
+        };
+        border-radius: 50%;
+        animation-name: a;
+        animation-duration: 1s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+    }
+}
+
+@keyframes a {
+    0% {
+        transform: rotate(0)
+    }
+    100% {
+        transform: rotate(360deg)
+    }
 }
