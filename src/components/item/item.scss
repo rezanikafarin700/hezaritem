@@ -11,6 +11,8 @@
   margin: 1rem;
   box-shadow: 1px 1px 10px $border;
   cursor: pointer;
+  text-decoration: none;
+  color : $text;
 
   @media (max-width : 1024px) and (min-width : 426px){
     width: calc(50% - 2rem);

@@ -62,7 +62,7 @@ export const Getproduct = () => {
         <input
           className="page__input"
           name="image"
-          value={getProduct.photo}
+          value={getProduct.image}
           onChange={handelInput}
           placeholder="لینک عکس"
           required={true}
