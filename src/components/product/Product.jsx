@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import Item from "../item/Item";
 import { getProduct } from "../../services/Service";
-import { useParams } from "react-router-dom";
-import "./product.scss";
+import { useParams,Link } from "react-router-dom";
 import Spinner from "../spinner/Spinner";
+import "./product.scss";
 
 const Product = () => {
   const { id: productId } = useParams();
@@ -30,7 +30,17 @@ const Product = () => {
 
   return (
     <div className="product">
-      {loading ? <Spinner /> : <Item data={getDataProduct} />}
+      {loading ? (
+        <Spinner />
+      ) : (
+        <div className="wrapper">
+          <Item data={getDataProduct} />
+          <div className="scale">
+            <Link to={`/products/delete/${productId}`} className="mybtn mybtn__delete">حذف</Link>
+            <Link to={`/products/edit/${productId}`} className="mybtn mybtn__denger">ویرایش</Link>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

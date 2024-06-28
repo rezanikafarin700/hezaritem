@@ -22,6 +22,12 @@ export const saveProduct = (data) => {
     //   }).then(res => console.log('javab =' ,res.data)).catch(err => console.log(err.message));
 }
 
+export const editProduct = (productData) => {
+    const url = `${SERVER_URL}/products/${productData.id}`;
+    console.log('in edit product Data =',productData);
+    return axios.put(url,productData);
+}
+
 
 export const getAllUsers = () => {
     return axios.get(`${SERVER_URL}/users`);
