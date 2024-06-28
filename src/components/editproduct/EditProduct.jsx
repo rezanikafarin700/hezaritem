@@ -17,7 +17,6 @@ export const EditProduct = () => {
 
   const { id } = useParams();
 
-
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -36,11 +35,13 @@ export const EditProduct = () => {
       }
     };
     featchData();
-    console.log("useEffect , product = ", getDataProduct);
   }, []);
 
   const handelInput = (event) => {
-    setDataProduct({...getDataProduct,[event.target.name]: event.target.value });
+    setDataProduct({
+      ...getDataProduct,
+      [event.target.name]: event.target.value,
+    });
   };
 
   const handelSubmit = async (e) => {
@@ -101,7 +102,7 @@ export const EditProduct = () => {
             <input
               type="submit"
               className="mybtn mybtn__sucsess"
-              value="+ محصول جدید"
+              value="ویرایش محصول"
             />
             <Link to="/" className="mybtn mybtn__denger">
               بازگشت

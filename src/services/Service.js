@@ -28,6 +28,12 @@ export const editProduct = (productData) => {
     return axios.put(url,productData);
 }
 
+export const removeProduct = (id) => {
+    const url = `${SERVER_URL}/products/${id}`;
+    return axios.delete(url,id);
+}
+
+
 
 export const getAllUsers = () => {
     return axios.get(`${SERVER_URL}/users`);
