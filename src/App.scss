@@ -41,3 +41,13 @@
     color: $text;
   }
 }
+
+.input-box{
+  border: none;
+  outline: none;
+  background-color: $background;
+  direction: rtl;
+  border-radius: 4px;
+  width: 25%;
+  text-align: center;
+}
