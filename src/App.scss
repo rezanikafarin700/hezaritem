@@ -1,36 +1,53 @@
 @import "../public/sass/colorpullet.scss";
 
-.app{
+.app {
   display: flex;
   flex-direction: column;
-  flex : 1 1 auto;
-  color : $text;
+  flex: 1 1 auto;
+  color: $text;
   background: $background;
 }
 
-.mybtn{
-  padding: .5rem 1rem;
+.wrapper{
+  margin: 0 1rem;
+}
+
+.scale{
+  display: flex;
+  justify-content: space-between;
+}
+
+.mybtn {
+  padding: 0.5rem 1rem;
   border-radius: 4px;
   text-align: center;
   border: none;
   font-size: medium;
   cursor: pointer;
+  text-decoration: none;
+  color: $color-btn;
 
-  &__sucsess{
+  &__sucsess {
     background-color: $footer;
-    color : $color-btn;
-  
   }
-  &__denger{
+  &__delete {
+    background-color: $delete;
+  }
+  &__denger {
     background-color: $denger;
-    color : $color-btn;
- 
   }
-  &__logo{
+  &__logo {
     background-color: $background;
-    color : $text;
+    color: $text;
   }
 }
 
-
-
+.input-box{
+  border: none;
+  outline: none;
+  background-color: $background;
+  direction: rtl;
+  border-radius: 4px;
+  width: 25%;
+  text-align: center;
+}

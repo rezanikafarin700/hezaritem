@@ -1,0 +1,13 @@
+@import '../../../public/sass/colorpullet';
+
+.box{
+    border-radius: 4px;
+    background-color: $footer;
+    direction: rtl;
+    padding: 1rem;
+
+    &__btns{
+        display: flex;
+        justify-content: space-between;
+    }
+}
