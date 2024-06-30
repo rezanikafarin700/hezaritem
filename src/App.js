@@ -7,7 +7,6 @@ const App = () => {
   const [text,setText] = useState('');
 
   const handelText = (emitText) =>{
-    console.log('App , handelText = ',emitText);
     setText(emitText);
   }
 

@@ -3,35 +3,57 @@ import { useEffect, useState } from "react";
 import { getAllProducts, getAllUsers } from "../../services/Service";
 import "./home.scss";
 
-const Home = ({text}) => {
+const Home = ({ text }) => {
   const [loading, setLoading] = useState(false);
   const [getProducts, setProducts] = useState([]);
   const [getUsers, setUsers] = useState([]);
 
   useEffect(() => {
-    console.log("useEffect...");
     const featchData = async () => {
       try {
         setLoading(true);
         const { data: products } = await getAllProducts();
-        const productsFilter = products.filter(p => {
-          console.log('text in filter =',text);
-          return p.title.indexOf(text ) > -1;
-        })
-        const { data: users } = await getAllUsers();
-        setProducts(productsFilter);
-        setUsers(users);
+
+        // میتوان دادهای دیگری را که لازم است خواند . مثال
+        // const { data: users } = await getAllUsers();
+        // setUsers(users);
+
+        setProducts(products);
         setLoading(false);
       } catch (err) {
         console.log(err.message);
         setLoading(false);
       }
     };
+    console.log('mounting ....');
+    featchData();
+  }, []);
 
+
+
+
+  useEffect(() => {
+    const featchData = async () => {
+      try {
+        setLoading(true);
+        const { status, data } = await getAllProducts();
+
+        const dataFilter = data.filter((p) => {
+          return p.title.indexOf(text) > -1;
+        });
+        if (status === 200) {
+          setLoading(false);
+          setProducts(dataFilter);
+        }
+      } catch (err) {
+        console.log(err.message);
+        setLoading(false);
+      }
+    };
+    console.log('Updateing ...');
     featchData();
   }, [text]);
 
-  console.log("text in Home = ", text);
 
   return (
     <div className="home">
