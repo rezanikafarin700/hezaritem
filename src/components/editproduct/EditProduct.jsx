@@ -1,40 +1,25 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { editProduct, getProduct } from "../../services/Service";
+import { editProduct } from "../../services/Service";
 import { Spinner } from "../../components";
+import DataContext from "../../data/DataContext";
+
 import "../../components/getinfo/getproduct.scss";
 
-export const EditProduct = () => {
+export const EditProduct = ({forceRender,setForceRender}) => {
   const navigate = useNavigate();
 
-  const [getDataProduct, setDataProduct] = useState({
-    id: null,
-    title: "",
-    text: "",
-    price: "",
-    image: "",
-  });
+  const [getDataProduct, setDataProduct] = useState({});
+
+  const context = useContext(DataContext);
 
   const { id } = useParams();
 
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const featchData = async () => {
-      try {
-        setLoading(true);
-        const { data: productData } = await getProduct(id);
-        setDataProduct(() => {
-          let newState = { ...productData };
-          return newState;
-        });
-        setLoading(false);
-      } catch (err) {
-        console.log(err.message);
-        setLoading(false);
-      }
-    };
-    featchData();
+    const product = context.products.find((p) => p.id === id);
+    setDataProduct(product);
   }, []);
 
   const handelInput = (event) => {
@@ -52,6 +37,7 @@ export const EditProduct = () => {
       if (status === 200) {
         setDataProduct({});
         setLoading(false);
+        setForceRender(!forceRender);
         navigate("/");
       }
     } catch (err) {
