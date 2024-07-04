@@ -49,7 +49,7 @@ const App = () => {
       <Header text={text} onChangeText={handelText} />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/addproduct" element={<Getproduct />} />
+        <Route path="/addproduct" element={<Getproduct forceRender={forceRender} setForceRender={setForceRender}/>} />
         <Route path="/products/:id" element={<Product />} />
         <Route path="/products/edit/:id" element={<EditProduct forceRender={forceRender} setForceRender={setForceRender}/>} />
         <Route path="/products/delete/:id" element={<DeleteProduct />} />

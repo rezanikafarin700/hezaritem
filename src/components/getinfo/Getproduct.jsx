@@ -4,7 +4,7 @@ import { saveProduct } from "../../services/Service";
 import { Spinner} from '../../components';
 import "./getproduct.scss";
 
-export const Getproduct = () => {
+export const Getproduct = ({forceRender,setForceRender}) => {
 
   const navigate = useNavigate();
 
@@ -30,6 +30,7 @@ export const Getproduct = () => {
       if(status === 201){
         setProduct({});
         setLoading(false);
+        setForceRender(!forceRender);
         navigate("/");
       }
     } catch(err) {
