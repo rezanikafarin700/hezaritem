@@ -5,7 +5,7 @@ const Header = (props) => {
   const location = useLocation();
 
   const changeText = (event) => {
-    props.onChangeText(event.target.value);
+      props.onChangeText(event.target.value);
   };
 
   return (
