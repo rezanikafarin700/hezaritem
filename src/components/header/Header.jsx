@@ -1,23 +1,24 @@
 import { Link, useLocation } from "react-router-dom";
+import { useSelector,useDispatch } from "react-redux";
+import { updateSearch } from "../../slices/searchSlice";
 import "./header.scss";
 
-const Header = (props) => {
+const Header = () => {
   const location = useLocation();
 
-  const changeText = (event) => {
-    console.log("chabgeText = ", event.target.value);
-    props.onChangeText(event.target.value);
-  };
+  const text = useSelector(state => state.searchSlice.value);
+  const dispatch = useDispatch();
+
 
   return (
     <div className="header">
       <div className="mybtn mybtn__logo">لوگو</div>
       {location.pathname === "/" ? (
         <input
-          value={props.text}
+          value={text}
           className="input-box"
           placeholder="جستجو"
-          onChange={changeText}
+          onChange={(e) => dispatch(updateSearch(e.target.value))}
         />
       ) : null}
       <Link to="/addproduct" className="mybtn mybtn__sucsess">
