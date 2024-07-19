@@ -1,43 +1,36 @@
-import { Main } from "../../components";
-import { useEffect, useState } from "react";
-import { getAllProducts, getAllUsers } from "../../services/Service";
+import Item from "../item/Item";
+import { useSelector,useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { fetchProducts } from "../../slices/productSlice";
+import { useDebounce } from "../../customHooks/useDebounce";
+import { Sidebar, Spinner } from "../../components";
 import "./home.scss";
 
-const Home = ({text}) => {
-  const [loading, setLoading] = useState(false);
-  const [getProducts, setProducts] = useState([]);
-  const [getUsers, setUsers] = useState([]);
+const  Home = () => {
+    let text = useSelector(state => state.searchSlice.value);
+    let debounceValue = useDebounce(text,800);
+    const data =  useSelector(state => state.productSlice.data);
+    const loading = useSelector(state => state.productSlice.loading);
+    const dispatch =  useDispatch();
+    useEffect(()=>{
+      dispatch(fetchProducts(debounceValue));
+    },[dispatch,debounceValue]);
+    return (
 
-  useEffect(() => {
-    console.log("useEffect...");
-    const featchData = async () => {
-      try {
-        setLoading(true);
-        const { data: products } = await getAllProducts();
-        const productsFilter = products.filter(p => {
-          console.log('text in filter =',text);
-          return p.title.indexOf(text ) > -1;
-        })
-        const { data: users } = await getAllUsers();
-        setProducts(productsFilter);
-        setUsers(users);
-        setLoading(false);
-      } catch (err) {
-        console.log(err.message);
-        setLoading(false);
-      }
-    };
+<div className="main">
+        <div className="main__sidebar">
+          <Sidebar />
+        </div>
 
-    featchData();
-  }, [text]);
-
-  console.log("text in Home = ", text);
-
-  return (
-    <div className="home">
-      <Main data={getProducts} loading={loading} />
-    </div>
-  );
-};
+        <div className="main__items">
+          {loading ? (
+            <Spinner />
+          ) : (
+            data.map((d, index) =><Item key={index} data={d} />)
+          )}
+        </div>
+      </div>
+    );
+  }
 
 export default Home;

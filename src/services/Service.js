@@ -2,8 +2,10 @@ import axios from 'axios';
 
 const SERVER_URL =  'http://localhost:9000';
 
-export const getAllProducts = () => {
-    return axios.get(`${SERVER_URL}/products`);
+export const getAllProducts = async () => {
+    const products =  await axios.get(`${SERVER_URL}/products`);
+    console.log('products in Service = ',products.data);
+    return products.data;
 }
 
 export const getProduct = (id) => {
