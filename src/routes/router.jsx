@@ -4,6 +4,7 @@ import {
   Product,
   EditProduct,
   DeleteProduct,
+  Typist
 } from "../components";
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
@@ -40,6 +41,12 @@ export const router = createBrowserRouter([
         element: <DeleteProduct />,
         errorElement: <h3>error element</h3>,
       },
+      {
+        path: "typist",
+        element: <Typist  text="سلام رضا نیک آفرین هستم برنامه نویس فول استک" delay={150} />,
+        errorElement: <h3>error element</h3>,
+      },
+
     ],
   },
 ]);
