@@ -12,7 +12,7 @@ const Header = () => {
 
   return (
     <div className="header">
-      <div className="mybtn mybtn__logo">لوگو</div>
+      <Link to="/register" className="mybtn mybtn__logo">لوگو</Link>
       {location.pathname === "/" ? (
         <input
           value={text}
