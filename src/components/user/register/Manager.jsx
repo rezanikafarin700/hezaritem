@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { fetchUsers } from "../../../slices/userSlice";
 import Spinner from "../../spinner/Spinner";
 import { useState } from "react";
+import "./manager.scss";
 
 const Manager = () => {
   const [page, setPage] = useState(1);
@@ -18,19 +19,21 @@ const Manager = () => {
   let debounceValue = useDebounce(text, 800);
 
   useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
     dispatch(fetchUsers({ page: page, text: debounceValue }));
-  }, [dispatch, debounceValue, page, users,data]);
+  }, [dispatch, debounceValue, page, users, data]);
 
-  const addPage = () => {
-    setUsers((users) => [...users, ...data]);
-    let a = page + 1;
-    setPage(a);
+  const handleScroll = () => {
+    if (page < 8) {
+      setUsers((users) => [...users, ...data]);
+      setPage(page + 1);
+    }
   };
 
   return (
     <div>
       <h1>Manager</h1>
-      <button onClick={addPage}>page : {page}</button>
+      <button onClick={handleScroll}>page : {page}</button>
       {loading ? <Spinner /> : <div>{users}</div>}
     </div>
   );
