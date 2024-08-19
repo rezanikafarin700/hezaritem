@@ -6,7 +6,8 @@ import {
   DeleteProduct,
   Register,
   Users,
-  Manager
+  Manager,
+  InfinitLoading
  
 } from "../components";
 import { createBrowserRouter } from "react-router-dom";
@@ -57,6 +58,11 @@ export const router = createBrowserRouter([
       {
         path: "/manager",
         element: <Manager />,
+        errorElement: <h3>error element</h3>,
+      },
+      {
+        path: "/infinit",
+        element: <InfinitLoading />,
         errorElement: <h3>error element</h3>,
       },
     ],
