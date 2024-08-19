@@ -4,7 +4,6 @@ import Spinner from "../spinner/Spinner";
 import "./infint-loading.scss";
 
 const InfinitLoading = () => {
-  const [lastPage, setLastPage] = useState(0);
   const [totalData, setTotalData] = useState([]);
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
@@ -12,19 +11,31 @@ const InfinitLoading = () => {
   const [numberOfData, setNumberOfData] = useState(0);
 
   const BaseURL = "http://localhost/back-sef/public/api/users";
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization:
+        "Bearer hL3mLquFhdkhpj6qEfIBfjyOioIMLe34lr6kmQ9S4R5G77zR0sEzQpfL1zC6ZQaveBRK21K1amv4lBz5x3Gu5wySwvuY15ZqRCvV",
+    },
+  };
+
 
   const fetchData = async () => {
     try {
       setIsLoading(true);
-      let response = await axios.get(BaseURL + `?page=${page}`);
+      let response = await axios.get(BaseURL + `?page=${page}`,config);
       setTotalData((oldData) => [...oldData, ...response.data.data]);
-      setIsLoading(false);
-      setLastPage(response.data.last_page);
       setVisible((prev) => prev + response.data.per_page);
       setNumberOfData(response.data.total);
     } catch (err) {
       console.log(err);
+    }
+    finally{
       setIsLoading(false);
+      // window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+      window.scrollTo({ top: window.scrollY, behavior: 'smooth' });
+
     }
   };
 
@@ -34,15 +45,16 @@ const InfinitLoading = () => {
       document.documentElement.scrollHeight
     ) {
       setPage((prev) => prev + 1);
+
     }
   };
 
   useEffect(() => {
     fetchData();
+
   }, [page]);
 
   useEffect(() => {
-    console.log('document.documentElement() = ',document.documentElement.scrollHeight);
     visible < numberOfData && numberOfData > 0
       ? window.addEventListener("scroll", handleOnScroll)
       : window.removeEventListener("scroll", handleOnScroll);
@@ -58,10 +70,6 @@ const InfinitLoading = () => {
           <Spinner />
         ) : (
           <>
-            <h1>window.scrollY : {window.scrollY}</h1>
-            <h2>window.innerHeight : {window.innerHeight}</h2>
-            <h2>{numberOfData}</h2>
-            <h2>last page = {lastPage}</h2>
             <div>
               {totalData.map((data, index) => (
                 <div className="card" key={index}>
@@ -80,10 +88,6 @@ const InfinitLoading = () => {
             >
               scroll top
             </button>
-
-            Visible : {visible}
-            <h1>window.scrollY :  {window.scrollY}</h1>
-            <h1>window.innerHeight : {window.innerHeight}</h1>
 
             <hr />
           </>
