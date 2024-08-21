@@ -1,5 +1,6 @@
 html,body {
     behavior: "smooth";
+    min-height: 100vh;
 }
 .card{
     border: 1px solid aqua;
@@ -9,3 +10,4 @@ html,body {
     margin-top: 1rem;
     text-align: right;
 }
+

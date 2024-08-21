@@ -1,29 +1,41 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Spinner from "../spinner/Spinner";
-import ShowData from "../show-data/ShowData";
 import "./infint-loading.scss";
 
-const InfinitLoading = ({ BaseURL, config, fields, children }) => {
+const InfinitLoading = () => {
   const [totalData, setTotalData] = useState([]);
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [visible, setVisible] = useState(0);
   const [numberOfData, setNumberOfData] = useState(0);
 
+  const BaseURL = "http://localhost/back-sef/public/api/users";
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization:
+        "Bearer hL3mLquFhdkhpj6qEfIBfjyOioIMLe34lr6kmQ9S4R5G77zR0sEzQpfL1zC6ZQaveBRK21K1amv4lBz5x3Gu5wySwvuY15ZqRCvV",
+    },
+  };
+
+
   const fetchData = async () => {
     try {
       setIsLoading(true);
-      let response = await axios.get(`${BaseURL}?page=${page}`, config);
+      let response = await axios.get(BaseURL + `?page=${page}`,config);
       setTotalData((oldData) => [...oldData, ...response.data.data]);
       setVisible((prev) => prev + response.data.per_page);
       setNumberOfData(response.data.total);
     } catch (err) {
       console.log(err);
-    } finally {
+    }
+    finally{
       setIsLoading(false);
       // window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-      window.scrollTo({ top: window.scrollY, behavior: "smooth" });
+      window.scrollTo({ top: window.scrollY, behavior: 'smooth' });
+
     }
   };
 
@@ -33,11 +45,13 @@ const InfinitLoading = ({ BaseURL, config, fields, children }) => {
       document.documentElement.scrollHeight
     ) {
       setPage((prev) => prev + 1);
+
     }
   };
 
   useEffect(() => {
     fetchData();
+
   }, [page]);
 
   useEffect(() => {
@@ -59,7 +73,11 @@ const InfinitLoading = ({ BaseURL, config, fields, children }) => {
             <div>
               {totalData.map((data, index) => (
                 <div className="card" key={index}>
-                  <ShowData data={data} fields={fields} />
+                  <h1>{data.name}</h1>
+                  <p>{data.email}</p>
+                  <p>{data.mobile}</p>
+                  <p>{data.city}</p>
+                  <p>{data.address}</p>
                 </div>
               ))}
             </div>
