@@ -25,12 +25,9 @@ const InfinitLoading = ({ BaseURL, config, children }) => {
       arrTypes.push(child.type);
       arrClass.push(child.props.className ? child.props.className : null);
     });
-    setFields(oldData => [...oldData ,...arrFields]);
-    setElements(oldData => [...oldData,...arrTypes]);
-    setClassElements(oldData => [...oldData,...arrClass]);
-    console.log("array of fields = ", fields);
-    console.log("array of types = 1", arrTypes);
-    console.log("array of types = 1", arrClass);
+    setElements((oldData) => [...oldData, ...arrTypes]);
+    setClassElements((oldData) => [...oldData, ...arrClass]);
+    setFields((oldData) => [...oldData, ...arrFields]);
   };
 
   const fetchData = async () => {
@@ -60,8 +57,10 @@ const InfinitLoading = ({ BaseURL, config, children }) => {
 
   useEffect(() => {
     fillFieldsAndTypes();
-    fetchData();
+  }, []);
 
+  useEffect(() => {
+    fetchData();
   }, [page]);
 
   useEffect(() => {
@@ -80,21 +79,16 @@ const InfinitLoading = ({ BaseURL, config, children }) => {
           <Spinner />
         ) : (
           <>
-            {/* {console.log(children)}
-            {console.log('totalData[0] = ',totalData[0])} */}
-            {console.log('i elements = ',elements)}
-            {console.log('i fields = ',fields)}
-            {console.log('i classElement = ',classElements)}
-            <CreateElementsData
-              elements={elements}
-              fields={fields}
-              classElements={classElements}
-              data={totalData[0]}
-            />
             <div>
               {totalData.map((data, index) => (
                 <div className="card" key={index}>
-                  <ShowData data={data} fields={fields} />
+                  {/* <ShowData data={data} fields={fields} /> */}
+                  <CreateElementsData
+                    elements={elements}
+                    fields={fields}
+                    classElements={classElements}
+                    data={data}
+                  />
                 </div>
               ))}
             </div>

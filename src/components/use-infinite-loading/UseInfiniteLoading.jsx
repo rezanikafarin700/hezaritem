@@ -14,7 +14,7 @@ const UseInfiniteLoading = () => {
     },
   };
   // const fields  = [ 'name','address','mobile','email','city'];
-//   const fields = ["title", "price", "discount", "shipping_cost", "description"];
+  const fields = ["title", "price", "discount", "shipping_cost", "description"];
 
   return (
     <div style={{ minHeight: "100vh" }}>
