@@ -14,15 +14,19 @@ const UseInfiniteLoading = () => {
     },
   };
   // const fields  = [ 'name','address','mobile','email','city'];
-  const fields = ["title", "price", "discount", "shipping_cost", "description"];
+//   const fields = ["title", "price", "discount", "shipping_cost", "description"];
 
   return (
     <div style={{ minHeight: "100vh" }}>
       <InfinitLoading
         BaseURL={BaseUrl}
         config={config}
-        fields={fields}
-      ></InfinitLoading>
+      >
+        <h1 className="myTitle">title</h1>
+        <div className="myPrice">price</div>
+        <p>discount</p>
+        <i className="myI">description</i>
+      </InfinitLoading>
     </div>
   );
 };
