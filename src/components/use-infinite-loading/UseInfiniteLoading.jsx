@@ -1,10 +1,9 @@
 import InfinitLoading from "../infinit-loading-component/InfinitLoading";
 import "./use-infinite-loading.scss";
-import ShowData from "../show-data/ShowData";
 
 const UseInfiniteLoading = () => {
-  //    const  BaseUrl= "http://localhost/back-sef/public/api/users";
-  const BaseUrl = "http://localhost/back-sef/public/api/products";
+  const BaseUrl = "http://localhost/back-sef/public/api/users";
+  // const BaseUrl = "http://localhost/back-sef/public/api/products";
   const config = {
     headers: {
       "Content-Type": "application/json",
@@ -14,18 +13,18 @@ const UseInfiniteLoading = () => {
     },
   };
   // const fields  = [ 'name','address','mobile','email','city'];
-  const fields = ["title", "price", "discount", "shipping_cost", "description"];
+  // const fields = ["title", "price", "discount", "shipping_cost", "description"];
 
   return (
     <div style={{ minHeight: "100vh" }}>
-      <InfinitLoading
-        BaseURL={BaseUrl}
-        config={config}
-      >
-        <h1 className="myTitle">title</h1>
-        <div className="myPrice">price</div>
-        <p>discount</p>
-        <i className="myI">description</i>
+      <InfinitLoading BaseURL={BaseUrl} config={config}>
+        <h1 className="card">
+          <h1 className="myTitle">name</h1>
+          <h2>city</h2>
+          <h1 className="address">address</h1>
+          <p>mobile</p>
+          <i className="myI">email</i>
+        </h1>
       </InfinitLoading>
     </div>
   );

@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Spinner from "../spinner/Spinner";
-import ShowData from "../show-data/ShowData";
 import CreateElementsData from "../create-elements-data/CreateElementsData";
 import "./infint-loading.scss";
 
@@ -16,11 +15,11 @@ const InfinitLoading = ({ BaseURL, config, children }) => {
   const [elements, setElements] = useState([]);
   const [classElements, setClassElements] = useState([]);
 
-  const fillFieldsAndTypes = () => {
+  const parsingDOM = () => {
     let arrFields = [];
     let arrTypes = [];
     let arrClass = [];
-    children.map((child) => {
+    children.props.children.map((child) => {
       arrFields.push(child.props.children);
       arrTypes.push(child.type);
       arrClass.push(child.props.className ? child.props.className : null);
@@ -56,7 +55,7 @@ const InfinitLoading = ({ BaseURL, config, children }) => {
   };
 
   useEffect(() => {
-    fillFieldsAndTypes();
+    parsingDOM();
   }, []);
 
   useEffect(() => {
@@ -81,8 +80,7 @@ const InfinitLoading = ({ BaseURL, config, children }) => {
           <>
             <div>
               {totalData.map((data, index) => (
-                <div className="card" key={index}>
-                  {/* <ShowData data={data} fields={fields} /> */}
+                <div className={children.props.className} key={index}>
                   <CreateElementsData
                     elements={elements}
                     fields={fields}
@@ -90,6 +88,7 @@ const InfinitLoading = ({ BaseURL, config, children }) => {
                     data={data}
                   />
                 </div>
+                
               ))}
             </div>
             <button
