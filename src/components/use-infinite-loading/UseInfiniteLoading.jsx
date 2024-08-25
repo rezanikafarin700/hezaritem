@@ -17,7 +17,7 @@ const UseInfiniteLoading = () => {
 
   return (
     <div style={{ minHeight: "100vh" }}>
-      <InfinitLoading BaseURL={BaseUrl} config={config}>
+      <InfinitLoading BaseURL={BaseUrl} config={config} responseDataField='data'>
         <h1 className="card">
           <h1 className="myTitle">name</h1>
           <h2>city</h2>

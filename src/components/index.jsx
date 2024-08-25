@@ -13,4 +13,5 @@ export { default as Register } from './user/register/Register';
 export { default as EditProduct } from "./editproduct/EditProduct";
 export { default as DeleteProduct } from "./deleteproduct/DeleteProduct";
 export {default as InfinitLoading} from './infinit-loading-component/InfinitLoading';
-export {default as UseInfiniteLoading} from './use-infinite-loading/UseInfiniteLoading'
+export {default as UseInfiniteLoading} from './use-infinite-loading/UseInfiniteLoading';
+export {default as TestInfinitLoading} from './test-infinit-loading/TestInfinitLoading';

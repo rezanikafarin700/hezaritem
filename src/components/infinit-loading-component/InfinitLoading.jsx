@@ -4,7 +4,7 @@ import Spinner from "../spinner/Spinner";
 import CreateElementsData from "../create-elements-data/CreateElementsData";
 import "./infint-loading.scss";
 
-const InfinitLoading = ({ BaseURL, config, children }) => {
+const InfinitLoading = ({ BaseURL, config, children,responseDataField=null }) => {
   const [totalData, setTotalData] = useState([]);
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
@@ -16,6 +16,10 @@ const InfinitLoading = ({ BaseURL, config, children }) => {
   const [classElements, setClassElements] = useState([]);
 
   const parsingDOM = () => {
+    if (children.props.children === undefined) {
+      return;
+    }
+
     let arrFields = [];
     let arrTypes = [];
     let arrClass = [];
@@ -33,9 +37,13 @@ const InfinitLoading = ({ BaseURL, config, children }) => {
     try {
       setIsLoading(true);
       let response = await axios.get(`${BaseURL}?page=${page}`, config);
-      setTotalData((oldData) => [...oldData, ...response.data.data]);
+      console.log('response keys = ',Object.keys(response.data));
+      let modle = responseDataField ? response.data[responseDataField] : response.data;
+      setTotalData((oldData) => [...oldData, ...modle]);
       setVisible((prev) => prev + response.data.per_page);
       setNumberOfData(response.data.total);
+      console.log('numberOfData = ',numberOfData);
+      console.log('per_page =',visible);
     } catch (err) {
       console.log(err);
     } finally {
@@ -55,6 +63,7 @@ const InfinitLoading = ({ BaseURL, config, children }) => {
   };
 
   useEffect(() => {
+    console.log("childrenm ", children);
     parsingDOM();
   }, []);
 
@@ -63,12 +72,19 @@ const InfinitLoading = ({ BaseURL, config, children }) => {
   }, [page]);
 
   useEffect(() => {
-    visible < numberOfData && numberOfData > 0
+    if(numberOfData === undefined){
+      window.addEventListener("scroll", handleOnScroll)
+
+    }
+    else{
+
+      visible < numberOfData && numberOfData > 0
       ? window.addEventListener("scroll", handleOnScroll)
       : window.removeEventListener("scroll", handleOnScroll);
     return () => {
       window.removeEventListener("scroll", handleOnScroll);
     };
+    }
   }, [visible]);
 
   return (
@@ -80,7 +96,7 @@ const InfinitLoading = ({ BaseURL, config, children }) => {
           <>
             <div>
               {totalData.map((data, index) => (
-                <div className={children.props.className} key={index}>
+                <div className={children === undefined ? "" : children.props.className} key={index}>
                   <CreateElementsData
                     elements={elements}
                     fields={fields}
@@ -88,7 +104,6 @@ const InfinitLoading = ({ BaseURL, config, children }) => {
                     data={data}
                   />
                 </div>
-                
               ))}
             </div>
             <button
