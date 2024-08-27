@@ -8,7 +8,8 @@ import {
   Users,
   Manager,
   UseInfiniteLoading,
-  TestInfinitLoading
+  TestInfinitLoading,
+  ImageUpload
  
 } from "../components";
 import { createBrowserRouter } from "react-router-dom";
@@ -71,6 +72,12 @@ export const router = createBrowserRouter([
         element: <TestInfinitLoading />,
         errorElement: <h3>error element</h3>,
       },
+      {
+        path: "/upload",
+        element: <ImageUpload />,
+        errorElement: <h3>error element</h3>,
+      },
+      
 
 
     ],
