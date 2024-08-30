@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import "./avatar-upload.scss";
 
-const AvatarUpload = ({title="عکس پروفایل"}) => {
+const AvatarUpload = ({onUpload,title = "عکس پروفایل"}) => {
   const [file, setFile] = useState(null);
 
   const createObjectUrl = (file) => {
@@ -9,17 +9,23 @@ const AvatarUpload = ({title="عکس پروفایل"}) => {
   };
   const handleInput = (e) => {
     let obj = e.target.files[0];
+    console.log('file = ',obj);
     setFile(() => obj);
+    
   };
 
   const delImage = () =>{
     setFile(()=> null)
   }
 
+  useEffect(()=>{
+    onUpload(file);
+  },[file]);
+
   return (
     <div className="avatar" style={{...file ? {outline : '2px solid #eee'} : {}}}>
       <div className="avatar__ratio"></div>
-      <input type="file" onChange={handleInput} title={title} className="avatar__input" />
+      <input type="file" title={title} onChange={handleInput} className="avatar__input" />
       {file ? (
         <>
           {" "}

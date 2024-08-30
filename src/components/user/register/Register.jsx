@@ -24,10 +24,11 @@ export const Register = () => {
     address: "",
     email: "",
     password: "",
-    avatar: "",
+    avatar: {},
   });
 
   const [loading, setLoading] = useState(false);
+  const [image,setImage] = useState(null);
 
   const handelInput = (event) => {
     event.persist();
@@ -38,20 +39,23 @@ export const Register = () => {
     e.preventDefault();
     try {
       setLoading(true);
-      console.log("getUser = ", getUser);
-      //   const { status } = await saveUser(getUser);
-      let data = {
-        address: getUser.address,
-        avatar: getUser.avatar,
-        city: getUser.city,
-        email: getUser.email,
-        mobile: getUser.mobile,
-        name: getUser.name,
-        password: "1234567",
-        type: getUser.type,
-      };
-      axios
-        .post(URL, data, config)
+      const fd = new FormData();
+      fd.append('name',getUser.name)
+      fd.append('mobile', getUser.mobile)
+      fd.append('email', getUser.email)
+      fd.append('city',  getUser.city)
+      fd.append('address', getUser.address)
+      fd.append('type', getUser.type)
+      fd.append('password', '1234567')
+      fd.append('avatar',image)
+      axios({
+        method: 'post',
+        url: URL,
+        data: fd,
+        headers: {
+            'Content-Type': 'multipart/form-data',
+        }
+        })
         .then((res) => console.log("response = ", res))
         .catch((err) => {
           if (err.response) {
@@ -63,21 +67,22 @@ export const Register = () => {
             }
           }
         });
-      // saveUser(data);
-      //   console.log("status  = ", status);
-      //   if (status === 201) {
       setUser({});
       setLoading(false);
       // navigate("/");
-      //   }
     } catch (err) {
       console.log(err.message);
       setLoading(false);
     }
   };
 
+  const getImage = (img) =>{
+    setImage(img)
+  }
+
   return (
     <div className="page">
+      {image ? <div>{image.name}</div> : ""}
       {loading ? (
         <Spinner />
       ) : (
@@ -95,7 +100,7 @@ export const Register = () => {
                   onChange={handelInput}
                   // required={true}
                 />
-                <span class="page__checkmark"></span>
+                <span className="page__checkmark"></span>
               </label>
               <br />
               <label id="type-admin" className="page__container-radio">
@@ -109,12 +114,12 @@ export const Register = () => {
                   onChange={handelInput}
                   // required={true}
                 />
-                <span class="page__checkmark"></span>
+                <span className="page__checkmark"></span>
               </label>
 
               <span className="page__err">{inputErrorList.type}</span>
             </div>
-            <AvatarUpload />
+            <AvatarUpload  onUpload={getImage}/>
           </div>
           <input
             className="page__input"
