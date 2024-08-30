@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { saveUser } from "../../../services/DBService";
-import { Spinner } from "../../../components";
-// import { Spinner } from "../../components";
+import { Spinner, AvatarUpload } from "../../../components";
 import axios from "axios";
 
 import "./register.scss";
@@ -52,17 +50,19 @@ export const Register = () => {
         password: "1234567",
         type: getUser.type,
       };
-      axios.post(URL,data,config).then((res) => console.log("response = ", res)).catch(err => {
-        if(err.response){
-          if(err.response.status === 422){
-            setInputErrorList(err.response.data.errors);
-
-          }
-          if(err.response.status === 500){
+      axios
+        .post(URL, data, config)
+        .then((res) => console.log("response = ", res))
+        .catch((err) => {
+          if (err.response) {
+            if (err.response.status === 422) {
+              setInputErrorList(err.response.data.errors);
+            }
+            if (err.response.status === 500) {
               alert(err.response.data);
+            }
           }
-        }
-      });
+        });
       // saveUser(data);
       //   console.log("status  = ", status);
       //   if (status === 201) {
@@ -82,6 +82,40 @@ export const Register = () => {
         <Spinner />
       ) : (
         <form className="page__box" onSubmit={handelSubmit}>
+          <div className="page__container-avatar">
+            <div className="page__type-user">
+              <label id="type-admin" className="page__container-radio">
+                تولید کننده هستم
+                <input
+                  className=""
+                  name="type"
+                  id="type-admin"
+                  type="radio"
+                  value="ADMIN"
+                  onChange={handelInput}
+                  // required={true}
+                />
+                <span class="page__checkmark"></span>
+              </label>
+              <br />
+              <label id="type-admin" className="page__container-radio">
+                خریدار هستم
+                <input
+                  className=""
+                  name="type"
+                  id="type-user"
+                  type="radio"
+                  value="USER"
+                  onChange={handelInput}
+                  // required={true}
+                />
+                <span class="page__checkmark"></span>
+              </label>
+
+              <span className="page__err">{inputErrorList.type}</span>
+            </div>
+            <AvatarUpload />
+          </div>
           <input
             className="page__input"
             name="name"
@@ -90,7 +124,7 @@ export const Register = () => {
             placeholder="نام و نام خانوادگی"
             // required={true}
           />
-          <span className="err">{inputErrorList.name}</span>
+          <span className="page__err">{inputErrorList.name}</span>
           <input
             className="page__input"
             name="email"
@@ -99,7 +133,7 @@ export const Register = () => {
             placeholder="ایمیل"
             // required={true}
           />
-          <span className="err">{inputErrorList.email}</span>
+          <span className="page__err">{inputErrorList.email}</span>
 
           <input
             className="page__input"
@@ -109,29 +143,7 @@ export const Register = () => {
             placeholder="مبایل"
             // required={true}
           />
-          <span className="err">{inputErrorList.mobile}</span>
-
-          <label id="type-admin">تولید کننده</label>
-          <input
-            className=""
-            name="type"
-            id="type-admin"
-            type="radio"
-            value="ADMIN"
-            onChange={handelInput}
-            // required={true}
-          />
-          <label id="type-admin">خریدار</label>
-          <input
-            className=""
-            name="type"
-            id="type-user"
-            type="radio"
-            value="USER"
-            onChange={handelInput}
-            // required={true}
-          />
-          <span className="err">{inputErrorList.type}</span>
+          <span className="page__err">{inputErrorList.mobile}</span>
 
           <input
             className="page__input"
@@ -141,7 +153,7 @@ export const Register = () => {
             placeholder="شهر"
             // required={true}
           />
-          <span className="err">{inputErrorList.city}</span>
+          <span className="page__err">{inputErrorList.city}</span>
 
           <input
             className="page__input"
@@ -151,9 +163,9 @@ export const Register = () => {
             placeholder="آدرس"
             // required={true}
           />
-          <span className="err">{inputErrorList.address}</span>
+          <span className="page__err">{inputErrorList.address}</span>
 
-          <input
+          {/* <input
             className="page__input"
             name="avatar"
             value={getUser.avatar}
@@ -161,13 +173,13 @@ export const Register = () => {
             placeholder="لینک عکس"
             // required={true}
           />
-          <span className="err">{inputErrorList.avatar}</span>
+          <span className="err">{inputErrorList.avatar}</span> */}
 
           <div className="page__btns">
             <input
               type="submit"
               className="mybtn mybtn__sucsess"
-              value="+ محصول جدید"
+              value="ثبت نام کاربر"
             />
             <Link to="/" className="mybtn mybtn__denger">
               بازگشت

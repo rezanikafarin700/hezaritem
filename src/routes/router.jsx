@@ -9,7 +9,9 @@ import {
   Manager,
   UseInfiniteLoading,
   TestInfinitLoading,
-  ImageUpload
+  ImageUpload,
+  AvatarUpload,
+  ProfileUpload
  
 } from "../components";
 import { createBrowserRouter } from "react-router-dom";
@@ -17,18 +19,15 @@ import MainLayout from "../layouts/MainLayout";
 
 export const router = createBrowserRouter([
   {
+    
     path: "/",
     element: <MainLayout />,
     errorElement: <h3>Error element</h3>,
     children: [
+
       {
         path: "/",
         element: <Home />,
-        errorElement: <h3>error element</h3>,
-      },
-      {
-        path: "/register",
-        element: <Register />,
         errorElement: <h3>error element</h3>,
       },
       {
@@ -77,9 +76,27 @@ export const router = createBrowserRouter([
         element: <ImageUpload />,
         errorElement: <h3>error element</h3>,
       },
+      {
+        path: "/avatar",
+        element: <AvatarUpload />,
+        errorElement: <h3>error element</h3>,
+      },
+      {
+        path: "/profile",
+        element: <ProfileUpload />,
+        errorElement: <h3>error element</h3>,
+      },
+      
       
 
 
     ],
+    
   },
+  {
+    path: "/register",
+    element: <Register />,
+    errorElement: <h3>error element</h3>,
+  },
+
 ]);
