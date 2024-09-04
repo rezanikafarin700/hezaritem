@@ -1,13 +1,14 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState,useEffect } from "react";
+import { Link, useNavigate,useParams } from "react-router-dom";
 import { Spinner, AvatarUpload } from "../../../components";
 import axios from "axios";
 
-import "./register.scss";
+import "./edit-user.scss";
 
-export const Register = () => {
-  const navigate = useNavigate();
-  const URL = "http://localhost/back-sef/public/api/users";
+export const EditUser = () => {
+    const { id : userId } = useParams();
+    const navigate = useNavigate();
+  const URL = `http://localhost/back-sef/public/api/users/${userId}`;
   const config = {
     headers: {
       "Content-Type": "application/json",
@@ -16,23 +17,15 @@ export const Register = () => {
   };
   const [inputErrorList, setInputErrorList] = useState({});
 
-  const [getUser, setUser] = useState({
-    name: "",
-    mobile: "",
-    type: "",
-    city: "",
-    address: "",
-    email: "",
-    password: "",
-    avatar: {},
-  });
+  const [user, setUser] = useState({});
 
   const [loading, setLoading] = useState(false);
   const [image,setImage] = useState(null);
 
+
   const handelInput = (event) => {
     event.persist();
-    setUser({ ...getUser, [event.target.name]: event.target.value });
+    setUser({ ...user, [event.target.name]: event.target.value });
   };
 
   const handelSubmit = async (e) => {
@@ -40,12 +33,12 @@ export const Register = () => {
     try {
       setLoading(true);
       const fd = new FormData();
-      fd.append('name',getUser.name)
-      fd.append('mobile', getUser.mobile)
-      fd.append('email', getUser.email)
-      fd.append('city',  getUser.city)
-      fd.append('address', getUser.address)
-      fd.append('type', getUser.type)
+      fd.append('name',user.name)
+      fd.append('mobile', user.mobile)
+      fd.append('email', user.email)
+      fd.append('city',  user.city)
+      fd.append('address', user.address)
+      fd.append('type', user.type)
       fd.append('password', '1234567')
       fd.append('avatar',image)
       axios({
@@ -80,6 +73,18 @@ export const Register = () => {
     setImage(img)
   }
 
+
+  useEffect(()=>{
+    try{
+        axios.get(URL,config).then(res =>{ setUser({...res.data}); setLoading(false)});
+
+    }catch(err){
+        console.log(err);
+        setLoading(false);
+    }
+  },[]);
+
+
   return (
     <div className="page">
       {loading ? (
@@ -95,7 +100,7 @@ export const Register = () => {
                   name="type"
                   id="type-admin"
                   type="radio"
-                  value="ADMIN"
+                  value={`${user.type}`}
                   onChange={handelInput}
                   // required={true}
                 />
@@ -109,7 +114,7 @@ export const Register = () => {
                   name="type"
                   id="type-user"
                   type="radio"
-                  value="USER"
+                  value={`${user.type}`}
                   onChange={handelInput}
                   // required={true}
                 />
@@ -118,12 +123,12 @@ export const Register = () => {
 
               <span className="page__err">{inputErrorList.type}</span>
             </div>
-            <AvatarUpload  onUpload={getImage}/>
+            <AvatarUpload imageCurrent={user.avatar} onUpload={getImage}/>
           </div>
           <input
             className="page__input"
             name="name"
-            value={getUser.name}
+            value={user.name}
             onChange={handelInput}
             placeholder="نام و نام خانوادگی"
             // required={true}
@@ -132,7 +137,7 @@ export const Register = () => {
           <input
             className="page__input"
             name="email"
-            value={getUser.email}
+            value={user.email}
             onChange={handelInput}
             placeholder="ایمیل"
             // required={true}
@@ -142,7 +147,7 @@ export const Register = () => {
           <input
             className="page__input"
             name="mobile"
-            value={getUser.mobile}
+            value={user.mobile}
             onChange={handelInput}
             placeholder="مبایل"
             // required={true}
@@ -152,7 +157,7 @@ export const Register = () => {
           <input
             className="page__input"
             name="city"
-            value={getUser.city}
+            value={user.city}
             onChange={handelInput}
             placeholder="شهر"
             // required={true}
@@ -162,7 +167,7 @@ export const Register = () => {
           <input
             className="page__input"
             name="address"
-            value={getUser.address}
+            value={user.address}
             onChange={handelInput}
             placeholder="آدرس"
             // required={true}
@@ -172,7 +177,7 @@ export const Register = () => {
           {/* <input
             className="page__input"
             name="avatar"
-            value={getUser.avatar}
+            value={user.avatar}
             onChange={handelInput}
             placeholder="لینک عکس"
             // required={true}
@@ -195,4 +200,4 @@ export const Register = () => {
   );
 };
 
-export default Register;
+export default EditUser;

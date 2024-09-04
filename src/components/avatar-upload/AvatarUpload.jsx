@@ -1,7 +1,7 @@
 import { useState,useEffect } from "react";
 import "./avatar-upload.scss";
 
-const AvatarUpload = ({onUpload,title = "عکس پروفایل"}) => {
+const AvatarUpload = ({imageCurrent = null,onUpload,title = "عکس پروفایل"}) => {
   const [file, setFile] = useState(null);
 
   const createObjectUrl = (file) => {
@@ -9,7 +9,6 @@ const AvatarUpload = ({onUpload,title = "عکس پروفایل"}) => {
   };
   const handleInput = (e) => {
     let obj = e.target.files[0];
-    console.log('file = ',obj);
     setFile(() => obj);
     
   };

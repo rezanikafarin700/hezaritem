@@ -11,7 +11,9 @@ import {
   TestInfinitLoading,
   ImageUpload,
   AvatarUpload,
-  ProfileUpload
+  ProfileUpload,
+  ShowUser,
+  EditUser,
  
 } from "../components";
 import { createBrowserRouter } from "react-router-dom";
@@ -57,11 +59,6 @@ export const router = createBrowserRouter([
         errorElement: <h3>error element</h3>,
       },
       {
-        path: "/manager",
-        element: <Manager />,
-        errorElement: <h3>error element</h3>,
-      },
-      {
         path: "/use-infinite",
         element: <UseInfiniteLoading />,
         errorElement: <h3>error element</h3>,
@@ -87,16 +84,35 @@ export const router = createBrowserRouter([
         errorElement: <h3>error element</h3>,
       },
       
-      
-
 
     ],
     
+    
+  },
+
+  {
+    path: "/manager",
+    element: <Manager />,
+    errorElement: <h3>error element</h3>,
   },
   {
     path: "/register",
     element: <Register />,
     errorElement: <h3>error element</h3>,
   },
+
+  {
+    path: "/show-user/:id",
+    element: <ShowUser />,
+    errorElement: <h3>error element</h3>,
+  },
+
+  {
+    path: "/edit-user/:id",
+    element: <EditUser />,
+    errorElement: <h3>error element</h3>,
+  },
+
+
 
 ]);
