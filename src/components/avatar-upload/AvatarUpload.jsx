@@ -1,7 +1,7 @@
 import { useState,useEffect } from "react";
 import "./avatar-upload.scss";
 
-const AvatarUpload = ({imageCurrent = null,onUpload,title = "عکس پروفایل"}) => {
+const AvatarUpload = ({currentImage = `./avatar.png`,onUpload,title = "عکس پروفایل"}) => {
   const [file, setFile] = useState(null);
 
   const createObjectUrl = (file) => {
@@ -9,6 +9,7 @@ const AvatarUpload = ({imageCurrent = null,onUpload,title = "عکس پروفای
   };
   const handleInput = (e) => {
     let obj = e.target.files[0];
+    console.log('file = ',obj);
     setFile(() => obj);
     
   };
@@ -18,11 +19,15 @@ const AvatarUpload = ({imageCurrent = null,onUpload,title = "عکس پروفای
   }
 
   useEffect(()=>{
+    console.log('currentImage = ',currentImage)
+  },[]);
+
+  useEffect(()=>{
     onUpload(file);
   },[file]);
 
   return (
-    <div className="avatar" style={{...file ? {outline : '2px solid #eee'} : {}}}>
+    <div className="avatar" style={{...currentImage ? {backgroundImage : `url(${currentImage})`} : {}}}>
       <div className="avatar__ratio"></div>
       <input type="file" title={title} onChange={handleInput} className="avatar__input" />
       {file ? (

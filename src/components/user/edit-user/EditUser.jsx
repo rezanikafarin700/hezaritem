@@ -8,7 +8,7 @@ import "./edit-user.scss";
 export const EditUser = () => {
     const { id : userId } = useParams();
     const navigate = useNavigate();
-  const URL = `http://localhost/back-sef/public/api/users/${userId}`;
+  const URL = `http://localhost/back-sef/public/api/users`;
   const config = {
     headers: {
       "Content-Type": "application/json",
@@ -18,6 +18,7 @@ export const EditUser = () => {
   const [inputErrorList, setInputErrorList] = useState({});
 
   const [user, setUser] = useState({});
+  const [typeUser,setTypeUser] = useState(null);
 
   const [loading, setLoading] = useState(false);
   const [image,setImage] = useState(null);
@@ -27,6 +28,11 @@ export const EditUser = () => {
     event.persist();
     setUser({ ...user, [event.target.name]: event.target.value });
   };
+
+
+  const changeTypeUser = (e) =>{
+    setTypeUser(e.target.value);
+  }
 
   const handelSubmit = async (e) => {
     e.preventDefault();
@@ -38,15 +44,17 @@ export const EditUser = () => {
       fd.append('email', user.email)
       fd.append('city',  user.city)
       fd.append('address', user.address)
-      fd.append('type', user.type)
+      fd.append('type', typeUser ? typeUser : user.type)
       fd.append('password', '1234567')
       fd.append('avatar',image)
+      
       axios({
         method: 'post',
-        url: URL,
+        url: URL+`/update/${userId}`,
         data: fd,
         headers: {
             'Content-Type': 'multipart/form-data',
+      
         }
         })
         .then((res) => console.log("response = ", res))
@@ -76,7 +84,7 @@ export const EditUser = () => {
 
   useEffect(()=>{
     try{
-        axios.get(URL,config).then(res =>{ setUser({...res.data}); setLoading(false)});
+        axios.get(URL+`/${userId}`,config).then(res =>{ setUser({...res.data}); setLoading(false);setTypeUser(res.data.type)});
 
     }catch(err){
         console.log(err);
@@ -100,8 +108,10 @@ export const EditUser = () => {
                   name="type"
                   id="type-admin"
                   type="radio"
-                  value={`${user.type}`}
-                  onChange={handelInput}
+                  value="ADMIN"
+                  onChange={changeTypeUser}
+                  checked={typeUser === "ADMIN"}
+
                   // required={true}
                 />
                 <span className="page__checkmark"></span>
@@ -114,8 +124,9 @@ export const EditUser = () => {
                   name="type"
                   id="type-user"
                   type="radio"
-                  value={`${user.type}`}
-                  onChange={handelInput}
+                  value="USER"
+                  checked={typeUser === "USER"}
+                  onChange={changeTypeUser}
                   // required={true}
                 />
                 <span className="page__checkmark"></span>
@@ -123,7 +134,7 @@ export const EditUser = () => {
 
               <span className="page__err">{inputErrorList.type}</span>
             </div>
-            <AvatarUpload imageCurrent={user.avatar} onUpload={getImage}/>
+            <AvatarUpload currentImage={user.avatar} onUpload={getImage}/>
           </div>
           <input
             className="page__input"
@@ -188,7 +199,7 @@ export const EditUser = () => {
             <input
               type="submit"
               className="mybtn mybtn__sucsess"
-              value="ثبت نام کاربر"
+              value="ویرایش"
             />
             <Link to="/manager" className="mybtn mybtn__denger">
               بازگشت

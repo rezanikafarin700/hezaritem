@@ -118,7 +118,7 @@ export const Register = () => {
 
               <span className="page__err">{inputErrorList.type}</span>
             </div>
-            <AvatarUpload  onUpload={getImage}/>
+            <AvatarUpload currentImage="" onUpload={getImage}/>
           </div>
           <input
             className="page__input"

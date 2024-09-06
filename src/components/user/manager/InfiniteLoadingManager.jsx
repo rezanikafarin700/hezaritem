@@ -62,7 +62,8 @@ const InfinitLoading = ({ BaseURL, config }) => {
         ) : (
           <table className="styled-table">
             <thead>
-                <th></th>
+                <th>عکس</th>
+                <th>شماره</th>
                 <th>نام</th>
                 <th>نوع کاربر</th>
                 <th>مبایل</th>
@@ -82,6 +83,7 @@ const InfinitLoading = ({ BaseURL, config }) => {
                       }
                     />
                   </td>
+                  <td>{data.id}</td>
                   <td>{data.name}</td>
                   <td>{data.type}</td>
                   <td>{data.mobile}</td>
