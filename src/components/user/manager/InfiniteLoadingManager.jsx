@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Spinner from "../../spinner/Spinner";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import "./infint-loading-manager.scss";
 
 const InfinitLoading = ({ BaseURL, config }) => {
@@ -10,6 +10,8 @@ const InfinitLoading = ({ BaseURL, config }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [visible, setVisible] = useState(0);
   const [numberOfData, setNumberOfData] = useState(0);
+
+  const navigate  = useNavigate();
 
   const fetchData = async () => {
     try {
@@ -37,6 +39,15 @@ const InfinitLoading = ({ BaseURL, config }) => {
     }
   };
 
+  const reloadPage = () => {
+    window.location.reload()
+  }
+
+  const refreshPage = () => {
+    navigate(0);
+  }
+
+
   useEffect(() => {
     fetchData();
   }, [page]);
@@ -52,6 +63,7 @@ const InfinitLoading = ({ BaseURL, config }) => {
         window.removeEventListener("scroll", handleOnScroll);
       };
     }
+
   }, [visible]);
 
   return (

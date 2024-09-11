@@ -1,13 +1,13 @@
-import { useState,useEffect } from "react";
-import { Link, useNavigate,useParams } from "react-router-dom";
-import { Spinner, AvatarUpload } from "../../../components";
+import { useState, useEffect } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { Spinner, AvatarUpload, NewAvatarUpload } from "../../../components";
 import axios from "axios";
 
 import "./edit-user.scss";
 
 export const EditUser = () => {
-    const { id : userId } = useParams();
-    const navigate = useNavigate();
+  const { id: userId } = useParams();
+  const navigate = useNavigate();
   const URL = `http://localhost/back-sef/public/api/users`;
   const config = {
     headers: {
@@ -18,45 +18,43 @@ export const EditUser = () => {
   const [inputErrorList, setInputErrorList] = useState({});
 
   const [user, setUser] = useState({});
-  const [typeUser,setTypeUser] = useState(null);
+  const [typeUser, setTypeUser] = useState(null);
 
   const [loading, setLoading] = useState(false);
-  const [image,setImage] = useState(null);
-
+  const [image, setImage] = useState(null);
+  const [url,setUrl] = useState(user.avatar);
 
   const handelInput = (event) => {
     event.persist();
     setUser({ ...user, [event.target.name]: event.target.value });
   };
 
-
-  const changeTypeUser = (e) =>{
+  const changeTypeUser = (e) => {
     setTypeUser(e.target.value);
-  }
+  };
 
   const handelSubmit = async (e) => {
     e.preventDefault();
     try {
       setLoading(true);
       const fd = new FormData();
-      fd.append('name',user.name)
-      fd.append('mobile', user.mobile)
-      fd.append('email', user.email)
-      fd.append('city',  user.city)
-      fd.append('address', user.address)
-      fd.append('type', typeUser ? typeUser : user.type)
-      fd.append('password', '1234567')
-      fd.append('avatar',image)
-      
+      fd.append("name", user.name);
+      fd.append("mobile", user.mobile);
+      fd.append("email", user.email);
+      fd.append("city", user.city);
+      fd.append("address", user.address);
+      fd.append("type", typeUser ? typeUser : user.type);
+      fd.append("password", "1234567");
+      fd.append("avatar", image);
+
       axios({
-        method: 'post',
-        url: URL+`/update/${userId}`,
+        method: "post",
+        url: URL + `/update/${userId}`,
         data: fd,
         headers: {
-            'Content-Type': 'multipart/form-data',
-      
-        }
-        })
+          "Content-Type": "multipart/form-data",
+        },
+      })
         .then((res) => console.log("response = ", res))
         .catch((err) => {
           if (err.response) {
@@ -77,21 +75,28 @@ export const EditUser = () => {
     }
   };
 
-  const getImage = (img) =>{
-    setImage(img)
-  }
+  const refreshPage = () => {
+    navigate(0);
+  };
 
+  const getImage = (img) => {
+    setImage(img);
+    console.log("img in getImg = ", img);
+  };
 
-  useEffect(()=>{
-    try{
-        axios.get(URL+`/${userId}`,config).then(res =>{ setUser({...res.data}); setLoading(false);setTypeUser(res.data.type)});
-
-    }catch(err){
-        console.log(err);
+  useEffect(() => {
+    try {
+      axios.get(URL + `/${userId}`, config).then((res) => {
+        setUser({ ...res.data });
         setLoading(false);
+        setTypeUser(res.data.type);
+        setUrl(res.data.avatar);
+      });
+    } catch (err) {
+      console.log(err);
+      setLoading(false);
     }
-  },[]);
-
+  }, []);
 
   return (
     <div className="page">
@@ -134,7 +139,12 @@ export const EditUser = () => {
 
               <span className="page__err">{inputErrorList.type}</span>
             </div>
-            <AvatarUpload currentImage={user.avatar} onUpload={getImage}/>
+            {/* <AvatarUpload currentImage={user.avatar} onUpload={getImage}/> */}
+            <NewAvatarUpload
+              fileImage={image}
+              currentImage={url}
+              onUpload={getImage}
+            />
           </div>
           <input
             className="page__input"
