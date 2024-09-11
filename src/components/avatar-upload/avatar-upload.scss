@@ -2,13 +2,16 @@
     width: 25%;
     border-radius: 50%;
     position: relative;
-    background-image: url('./avatar.png');
+    background-image: url('./user-icon.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     transition: all 0.5s;
     box-sizing: border-box;
     cursor: pointer;
+    border: 8px double #eee;
+    box-shadow: 1px 1px 3px #999;
+
 
 
     &__ratio{

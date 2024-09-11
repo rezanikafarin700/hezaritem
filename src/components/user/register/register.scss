@@ -1,13 +1,15 @@
 @import "../../../../public/sass/colorpullet";
 
 .page {
-  background-color: $sidebar;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: linear-gradient(250deg, #fff, #eee , #9999);
 
   &__box {
-    background-color: $header;
+    background-color: #fff;
+    border: 1px solid #eee;
+    box-shadow: 1px 1px 5px #999;
     border-radius: 4px;
     width: 100%;
     padding: 2rem;
@@ -34,8 +36,10 @@
     border-radius: 4px;
     outline: none;
     border: none;
-    background-color: $item;
+    background-color: #fff;
+    box-shadow: 1px 1px 5px #9999;
     padding: 0 1rem;
+    color : #9999;
   }
 
   &__container-avatar {
@@ -47,7 +51,7 @@
     flex-direction: column;
     font-style: italic;
     font-weight: bold;
-    color : #4f4a4a;
+    color : #999;
     display: flex;
     justify-content: center;
     position: relative;
@@ -114,7 +118,7 @@
     &__checkmark:after {
       width: 0.5rem;
       height: 0.5rem;
-      background-color: $header;
+      background-color: #999;
       border-radius: 50%;
       -webkit-transform: rotate(45deg);
       -ms-transform: rotate(45deg);

@@ -32,7 +32,7 @@ const NewAvatarUpload = ({ currentImage = null, onUpload }) => {
         <div className="ava__btn" onClick={delImage}>-</div>
         <div className="ava__img">
           <div className="ava__ratio"></div>
-          <img src={file ? createObjectUrl(file) : (currentImg && noChange ? currentImg : "../../../../images/avatar.png")}/>
+          <img src={file ? createObjectUrl(file) : (currentImg && noChange ? currentImg : "../../../../images/user-icon.png")}/>
         </div>
         <div className="ava__btn">
           +
