@@ -10,6 +10,7 @@ const InfinitLoading = ({ BaseURL, config }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [visible, setVisible] = useState(0);
   const [numberOfData, setNumberOfData] = useState(0);
+  // const [isRender,setIsRender] = useState(false);
 
   const navigate  = useNavigate();
 

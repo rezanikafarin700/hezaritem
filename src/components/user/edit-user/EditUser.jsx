@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Spinner, AvatarUpload, NewAvatarUpload } from "../../../components";
+import { useSelector,useDispatch } from "react-redux";
+import { updateForceRender } from "../../../slices/forceRenderSlice";
+
 import axios from "axios";
 
 import "./edit-user.scss";
@@ -23,6 +26,9 @@ export const EditUser = () => {
   const [loading, setLoading] = useState(false);
   const [image, setImage] = useState(null);
   const [url,setUrl] = useState(user.avatar);
+  const dispatch =  useDispatch();
+
+  const isSholdRender =  useSelector(state => state.forceRenderSlice.value);
 
   const handelInput = (event) => {
     event.persist();
@@ -68,6 +74,7 @@ export const EditUser = () => {
         });
       setUser({});
       setLoading(false);
+      dispatch(updateForceRender(true));
       navigate("/manager");
     } catch (err) {
       console.log(err.message);
