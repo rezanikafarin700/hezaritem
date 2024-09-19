@@ -14,6 +14,7 @@ import {
   ProfileUpload,
   ShowUser,
   EditUser,
+  DeleteUser
  
 } from "../components";
 import { createBrowserRouter } from "react-router-dom";
@@ -113,6 +114,11 @@ export const router = createBrowserRouter([
     errorElement: <h3>error element</h3>,
   },
 
+  {
+    path: "/delete-user/:id",
+    element: <DeleteUser />,
+    errorElement: <h3>error element</h3>,
+  },
 
 
 ]);

@@ -1,6 +1,7 @@
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Spinner from "../../spinner/Spinner";
 import axios from "axios";
 
 import "./show-user.scss";
@@ -38,7 +39,7 @@ const ShowUser = () => {
   return (
     <>
       {isLoading ? (
-        "loading ..."
+        <Spinner />
       ) : (
         <div className="parent-user">
           <div
@@ -65,9 +66,7 @@ const ShowUser = () => {
 
             <div className="user__wrapper-btns">
               <Link to={`/edit-user/${user.id}`} className="mybtn mybtn__sucsess">ویرایش</Link>
-              <Link to="/manager" className="mybtn mybtn__denger">
-                بازگشت
-              </Link>
+              <Link to={`/delete-user/${user.id}`} className="mybtn mybtn__denger">حذف</Link>
             </div>
           </div>
         </div>
