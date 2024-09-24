@@ -29,7 +29,7 @@ const DeleteUser = () => {
       {loading ? (
         <Spinner />
       ) : (
-        <Confirm title="آیا میخواهید این محصول را حذف کنید ؟">
+        <Confirm title="آیا میخواهید این کاربر را حذف کنید ؟">
           <Link className="mybtn mybtn__logo" to={`/show-user/${id}`}>
             انصراف
           </Link>
