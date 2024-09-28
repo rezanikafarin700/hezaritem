@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { Spinner, AvatarUpload, NewAvatarUpload } from "../../../components";
+import { Spinner, NewAvatarUpload } from "../../../components";
 import { useSelector,useDispatch } from "react-redux";
 import { updateForceRender } from "../../../slices/forceRenderSlice";
 

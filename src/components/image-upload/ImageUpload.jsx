@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import ImageUploadSvg from "./ImageUploadSvg";
 import "./image-upload.scss";
 
-const ImageUpload = () => {
+const ImageUpload = ({onUpload}) => {
   const [files, setFiles] = useState([]);
 
   const createObjectUrl = (file) => {
@@ -14,6 +14,13 @@ const ImageUpload = () => {
     setFiles((f) => [...f, ...obj]);
     console.log("files = ", files);
   };
+
+
+  useEffect(()=>{
+    onUpload(files);
+  },[files]);
+
+
 
   return (
     <div className="upload">
