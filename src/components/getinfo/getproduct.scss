@@ -53,4 +53,9 @@
         background-color: $item;
         margin : 1rem 0;
     }
+
+    &__textarea{
+        @extend .page__input;
+        height: 100px;
+    }
 }

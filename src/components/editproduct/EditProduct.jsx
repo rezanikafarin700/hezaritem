@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { editProduct, getProduct } from "../../services/Service";
-import { Spinner } from "../../components";
+import { Spinner,ImageUpload } from "../../components";
 import "../../components/getinfo/getproduct.scss";
 
 export const EditProduct = () => {
@@ -10,14 +10,25 @@ export const EditProduct = () => {
   const [getDataProduct, setDataProduct] = useState({
     id: null,
     title: "",
-    text: "",
+    shipping_cost : "",
+    return : "",
+    description: "",
     price: "",
-    image: "",
+    image: {},
+    images : []
   });
 
   const { id } = useParams();
 
   const [loading, setLoading] = useState(false);
+  const [images, setImages] = useState([]);
+
+  const getImage = (img) => {
+    setImages(()=> [...img]);
+    console.log('images products = ',images);
+  };
+
+
 
   useEffect(() => {
     const featchData = async () => {
@@ -26,6 +37,7 @@ export const EditProduct = () => {
         const { data: productData } = await getProduct(id);
         setDataProduct(() => {
           let newState = { ...productData };
+          console.log('product Data =',productData)
           return newState;
         });
         setLoading(false);
@@ -66,20 +78,13 @@ export const EditProduct = () => {
         <Spinner />
       ) : (
         <form className="page__box" onSubmit={handelSubmit}>
+          <ImageUpload onUpload={getImage} PreviousPhotos={getDataProduct.images}/>
           <input
             className="page__input"
             name="title"
             value={getDataProduct.title}
             onChange={handelInput}
             placeholder="عنوان"
-            required={true}
-          />
-          <input
-            className="page__input"
-            name="text"
-            value={getDataProduct.text}
-            onChange={handelInput}
-            placeholder="جمله کوتاه"
             required={true}
           />
           <input
@@ -96,6 +101,14 @@ export const EditProduct = () => {
             value={getDataProduct.image}
             onChange={handelInput}
             placeholder="لینک عکس"
+            required={true}
+          />
+          <textarea
+            className="page__textarea"
+            name="description"
+            value={getDataProduct.description}
+            onChange={handelInput}
+            placeholder="توضیحات"
             required={true}
           />
           <div className="page__btns">

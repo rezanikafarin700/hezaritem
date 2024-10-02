@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const SERVER_URL =  'http://localhost:9000';
+// const SERVER_URL =  'http://localhost:9000';
+const  SERVER_URL = "http://localhost/back-sef/public/api";
 
 export const getAllProducts = async () => {
     const products =  await axios.get(`${SERVER_URL}/products`);
